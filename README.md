@@ -1,84 +1,68 @@
-# 🏷 guess_game
+# 🎮 Guess the Number — Weekend Edition
 
-Gitbash Guessing Game
+A command-line number guessing game built with Bash. The Weekend Edition extends the original Day 3 implementation with multiple difficulty levels, player statistics, personal best tracking, and a leaderboard.
 
-## 📌 Problem Statement
+## 📌 Project Overview
 
-A robust, interactive guessing game designed specifically for **Git Bash**. This project features variable difficulties, real-time score tracking, dynamic line validation, localized match history, leaderboard calculation systems, and safe user history pruning.
-The script is optimized to be completely compliant with strict **ShellCheck** linter definitions.
+Guess the Number is an interactive Bash game where players try to identify a randomly generated number within a specified range.
 
-## Project_Goals
+Players can choose a difficulty level, track their previous games, compete for the best scores, and manage their personal game history.
 
-**practice Core Bash Concepts:** Implement loops (`while`), conditional statements (`if/else`), and user input handling (`read`).
+## ✨ Features
 
-**State Management:** Track variables across iterations (e.g., counting the total number of user attempts).
+- **Player Name Validation:** Accepts names containing 1–20 letters, digits, or underscores.
+- **Multiple Difficulty Levels:** Choose between Easy, Normal, and Hard.
+- **Interactive Gameplay:** Receive hints indicating whether your guess is too high or too low.
+- **Game Cancellation:** Enter `q` to cancel a game and return to the main menu.
+- **Game History:** View previous games, including difficulty, attempts, completion time, and date.
+- **Personal Best:** Automatically compares your performance with previous games on the same difficulty.
+- **Leaderboard:** Displays the top five players for the selected difficulty.
+- **Score Validation:** Detects damaged score records, skips invalid entries, and displays a warning.
+- **History Management:** Delete your personal game history with confirmation.
+- **Game Statistics:** View total games played and average attempts across all difficulty levels.
 
-**Input Validation:** Ensure the script safely handles non-numeric inputs or out-of-bounds guesses without crashing.
+## 🎯 Difficulty Levels
 
-## Tech_Stack
+| Difficulty | Number Range |
+| --- | --- |
+| Easy | 1–50 |
+| Normal | 1–100 |
+| Hard | 1–1000 |
 
-**Language:** Bash
+Normal is the default difficulty when no level is specified.
 
-**Environment:** Linux or Git Bash on windows
+Difficulty names are case-insensitive.
 
-## Features
+## 🛠️ Requirements
 
-### 1. Dynamic Difficulty Settings
+- Linux or another Unix-like operating system.
+- Bash shell.
+- Standard command-line utilities such as `date`, `awk`, `sort`, and `mktemp`.
 
-The script accepts arguments upon boot up to instantly calibrate gameplay ranges and limits:
-**Easy:** Values range from `1-50` with unlimited guessing attempts.
-**Normal:** Values range from `1-100` with unlimited guessing attempts *(Default fallback)*.
-**Hard:** Values range from `1-1000` capped tightly at a maximum of `7` attempts.
+## 🚀 Installation and Setup
 
-### 2. Time & Attempt Metrics
-
-Tracks execution timings accurately across system shifts
-Isolates pure integer constants from text string logging layouts cleanly using string pattern truncation engines (`${variable%% *}`).
-Converts numerical entries safely back to Base-10 decimals (`$((10#$variable))`) to circumvent structural octal conversions errors natively.
-
-### 3. Interactive Performance Visualizations
-
-**Match History Summary:** Displays valid matching logs across all levels simultaneously.
-**Leaderboard Engine:** Filters records exclusively for the active match difficulty level. It displays the **Top 5** players sorted by fewest attempts first, then by fastest time, while utilizing memory matrices to ensure each player is listed only once.
-
-### 4. Secure History
-
-Uses safe isolation variables (`temp_file.txt`) to process file modification streams sequentially without data collisions.
-Ensures that matching entries belonging to other competitors remain completely untouched.
-
-## How to run the game?
-
-Give permission to the file to let it run as a program (`chmod +x guess_game.sh`)
-Launch the game by providing your name and preferred difficulty level as arguments:
+### 1. Clone the repository
 
 ```bash
-./guess.sh Muna easy
-./guess.sh Alex hard
+git clone https://github.com/stanlee21/bash-05-guess-game.git
 ```
 
-## What i learned in the process
-
-How to capture and read user input dynamically in real time
-How to apply standard conditional logic (`if/elif/else`) and loops (`while`) in the terminal
-
-## Screenshots
-
-![alt text](<assets/image/Screenshot From 2026-10-31 12-48-14.png>)
-
-## Demo
-
-![alt text](<assets/image/Screenshot From 2026-10-31 12-47-44.png>)
-
-![alt text](<assets/image/Screenshot From 2026-10-31 12-48-53.png>)
-
-## ⚙ Installation & Setup
-
-Clone the repository:
+### 2. Navigate into the project directory
 
 ```bash
-git clone https://github.com/yourusername/project-name.git
-cd project-name
+cd bash-05-guess-game
 ```
+
+### 3. Make the script executable
+
+```bash
+chmod +x guess-game.sh
+```
+
+### 4. Start playing
+
+```bash
+
 
 Tata Stanley Mbajing
 Junior FrontEnd Developer
