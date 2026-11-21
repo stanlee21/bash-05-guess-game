@@ -29,8 +29,10 @@ fi
 name=$1
 
 # Validate the player's name
-if [[ -z "$name" || "$name" == *"|"* ]]; then
+# Validate the player's name
+if [[ ! "$name" =~ ^[a-zA-Z0-9_]{1,20}$ ]]; then
     echo "Error: Invalid player name."
+    echo "Name must contain 1-20 letters, digits, or underscores."
     echo "Usage: $0 name [easy|normal|hard]"
     exit 1
 fi
@@ -277,8 +279,7 @@ while true; do
 			done < "$SCORE_FILE"
 
 			if (( total_games > 0 )); then
-				average_attempts=$(awk -v total="$total_attempts" -v games="$total_games" \
-					'BEGIN { printf "%.2f", total / games }')
+				average_attempts=$((total_attempts / total_games))
 
 				echo "------------------------------------"
 				echo "Total games played: $total_games"
@@ -322,7 +323,9 @@ while true; do
 			else
 				printf "%-3s %-11s %-5s %-5s %-10s\n" "#" "PLAYER" "TRIES" "TIME" "DATE"
 				
+				unset seen_players
 				declare -A seen_players
+
 				rank=1
 
 				while IFS='|' read -r pad_tries pad_seconds p_name p_date || [[ -n "$pad_tries" ]]; do

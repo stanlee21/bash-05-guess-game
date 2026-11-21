@@ -1,0 +1,10 @@
+# Game score data
+score.txt
+
+# Temporary files
+temp_file.txt
+leaderboard.txt
+
+# Editor files
+*.swp
+*.swo
