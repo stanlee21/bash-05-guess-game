@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define destination file
-SCORE_FILE="score.txt"
+SCORE_FILE="${GAMES_FILE:-score.txt}"
 
 # Track temporary files
 TEMP_FILES=()
