@@ -61,10 +61,72 @@ chmod +x guess-game.sh
 
 ### 4. Start playing
 
-```bash
+Run the game using your player name and an optional difficulty level:
 
+```bash
+./guess-game.sh Ama easy
+```
+
+You can also start with the default Normal difficulty:
+
+```bash
+./guess-game.sh Ama
+```
+
+The player name is automatically converted to lowercase.
+
+## 🎮 How to Play
+
+After starting the game, you will see the main menu:
+
+1. **Play:** Start a new guessing game. Enter a number within the selected difficulty range. The game provides hints until you guess correctly. Enter `q` to cancel.
+2. **My History:** View your previous completed games and statistics.
+3. **Leaderboard:** View the top five players for the selected difficulty.
+4. **Delete My History:** Delete your personal game records after confirmation.
+5. **Quit:** Exit the game.
+
+## 📁 Game Data Format
+
+The game stores its records in `score.txt` by default.
+
+Each completed game is stored as a pipe-separated record containing:
+
+```text
+player|difficulty|attempts|duration|date
+```
+
+Example:
+
+```text
+ama|easy|6|24|2026-11-23
+```
+
+The fields represent:
+
+- `player`: The player's name.
+- `difficulty`: The selected difficulty level.
+- `attempts`: Number of valid guesses used.
+- `duration`: Time taken to complete the game, in seconds.
+- `date`: Date the game was completed.
+
+The game file can be changed using the `GAMES_FILE` environment variable:
+
+```bash
+GAMES_FILE=test.txt ./guess-game.sh Ama easy
+```
+
+When `GAMES_FILE` is not set, the game uses `score.txt`.
+
+## 🧪 Testing
+
+Run the game with different player names and difficulty levels. Test invalid inputs, game cancellation, history, leaderboard, and history deletion.
+
+To check the script for common Bash issues, run:
+
+```bash
+shellcheck guess-game.sh
+```
+
+## 👨‍💻 Author
 
 Tata Stanley Mbajing
-Junior FrontEnd Developer
-[📩 Email: (stanleymbajingtata@gmail.com)]
-🌍 Based in Cameroon | Open to remote opportunities
