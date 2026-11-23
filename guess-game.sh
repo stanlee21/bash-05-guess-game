@@ -183,6 +183,11 @@ while true; do
 					continue
 				fi
 
+				if (( guess < 1 || guess > MAX_RANGE )); then
+					echo "Please enter a number between 1 and $MAX_RANGE."
+					continue
+				fi
+
 				count=$((count + 1))
 
 				if (( guess > number )); then
