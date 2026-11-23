@@ -15,9 +15,6 @@ cleanup() {
 
 trap cleanup EXIT
 
-# Ensure the file exists so the loops don't error out on a fresh run
-touch "$SCORE_FILE"
-
 # Check if the correct number of arguments was provided
 if (( $# < 1 || $# > 2 )); then
     echo "Error: Invalid number of arguments."
@@ -28,7 +25,6 @@ fi
 # Get the player's name
 name="${1,,}"
 
-# Validate the player's name
 # Validate the player's name
 if [[ ! "$name" =~ ^[a-zA-Z0-9_]{1,20}$ ]]; then
     echo "Error: Invalid player name."
@@ -68,6 +64,9 @@ case "$level" in
         exit 1
         ;;
 esac
+
+# Ensure the file exists so the loops don't error out on a fresh run
+touch "$SCORE_FILE"
 
 # SCORE RECORD VALIDATION
 # ==========================================
