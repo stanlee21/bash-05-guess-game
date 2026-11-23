@@ -233,12 +233,13 @@ while true; do
 
 				# Display personal best result
 				if (( previous_best == 0 )); then
-					echo "This is your first game on $LEVEL_NAME!"
-				elif (( count < best_attempts )) || \
-					(( count == best_attempts && duration < best_seconds )); then
-					echo "New personal best! Previous best: $best_attempts attempts."
+						echo "This is your first game on $LEVEL_NAME!"
+				elif (( count < best_attempts )); then
+						echo "New personal best! Previous best: $best_attempts attempts."
+				elif (( count == best_attempts && duration < best_seconds )); then
+						echo "You matched your personal best of $best_attempts attempts with a faster time!"
 				else
-					echo "Your personal best is still $best_attempts attempts."
+						echo "Your personal best is still $best_attempts attempts."
 				fi
 
 				echo "${name}|${LEVEL_NAME}|${start_time}|${end_time}|${count}|${duration}" >> "$SCORE_FILE"
@@ -384,7 +385,7 @@ while true; do
 
 				cp "$temp_file" "$SCORE_FILE"
 				rm -f "$temp_file"
-				echo "Deleted $deleted_count games."
+				echo "Deleted $deleted_count game(s)"
 
 			elif [[ "$confirm" == "n" || "$confirm" == "no" ]]; then
 				echo "Nothing deleted."
