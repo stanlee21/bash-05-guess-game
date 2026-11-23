@@ -26,7 +26,7 @@ if (( $# < 1 || $# > 2 )); then
 fi
 
 # Get the player's name
-name=$1
+name="${1,,}"
 
 # Validate the player's name
 # Validate the player's name
