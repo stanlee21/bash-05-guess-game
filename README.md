@@ -87,35 +87,30 @@ After starting the game, you will see the main menu:
 
 ## 📁 Game Data Format
 
-The game stores its records in `score.txt` by default.
+The game stores completed game records in `score.txt` by default. You can specify a different file using the `GAMES_FILE` environment variable.
 
-Each completed game is stored as a pipe-separated record containing:
-
-```text
-player|difficulty|attempts|duration|date
-```
-
-Example:
+Each completed game is stored as a pipe-separated record containing six fields:
 
 ```text
-ama|easy|6|24|2026-11-23
+player|level|start_time|end_time|tries|seconds
 ```
 
 The fields represent:
 
-- `player`: The player's name.
-- `difficulty`: The selected difficulty level.
-- `attempts`: Number of valid guesses used.
-- `duration`: Time taken to complete the game, in seconds.
-- `date`: Date the game was completed.
+1. **Player:** The player's name.
+2. **Level:** The difficulty level (`easy`, `normal`, or `hard`).
+3. **Start time:** The date and time the game started.
+4. **End time:** The date and time the game ended.
+5. **Tries:** The number of guesses made.
+6. **Seconds:** The total time taken to complete the game, in seconds.
 
-The game file can be changed using the `GAMES_FILE` environment variable:
+Example:
 
-```bash
-GAMES_FILE=test.txt ./guess-game.sh Ama easy
+```text
+bob|hard|2026-10-31 10:20:02|2026-10-31 10:21:20|18|78
 ```
 
-When `GAMES_FILE` is not set, the game uses `score.txt`.
+This record means Bob played on hard difficulty, made 18 guesses, and completed the game in 78 seconds.
 
 ## 🧪 Testing
 

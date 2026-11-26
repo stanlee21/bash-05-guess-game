@@ -178,13 +178,16 @@ while true; do
 				fi
 
 				if [[ ! "$guess" =~ ^[0-9]+$ ]]; then
-					echo "Invalid input, please Enter a whole number."
-					continue
+						echo "Invalid input, please Enter a whole number."
+						continue
 				fi
 
+				# Convert the guess to base 10 to handle leading zeros
+				guess=$((10#$guess))
+
 				if (( guess < 1 || guess > MAX_RANGE )); then
-					echo "Please enter a number between 1 and $MAX_RANGE."
-					continue
+						echo "Please enter a number between 1 and $MAX_RANGE."
+						continue
 				fi
 
 				count=$((count + 1))
